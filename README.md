@@ -1,35 +1,30 @@
-# 🦊 Foxy — an animated fox login screen
+# Foxy Login Screen
 
-A self-contained, single-file login page with an expressive fennec-fox mascot who **reacts to what you do**: she blinks, gets sleepy when you're away, covers her eyes when you type your password, side-eyes you on Caps Lock, sulks on a wrong password, and celebrates a correct one. Everything (artwork + code) is baked into one `.html` file, so it runs offline with a double-click.
+A self-contained, single-file login page with an interactive fox mascot. The mascot reacts to user input: she blinks, closes her eyes during password entry, and changes expressions based on login success or failure. All assets and code are contained within a single `.html` file.
 
 ![Login screen](docs/login-light.png)
 
-## ✨ Features
+## Features
 
-- **Reactive character** — six hand-aligned expressions that crossfade smoothly into one another.
-- **Idle life** — random blinking (with the occasional double-blink), a periodic glance, and a sleepy state after 10s of inactivity.
-- **Password etiquette** — she closes her eyes while you type, and side-eyes you when Caps Lock is on.
-- **Login feedback** — wrong password = grumpy + shake; correct password = a happy "welcome" reveal.
-- **Light & dark themes** — periwinkle by day, deep indigo by night.
-- **One file, no dependencies** — images are embedded; works offline, hosts anywhere.
+* **Interactive character:** Six expressions that transition smoothly.
+* **Idle animations:** Random blinking and a sleepy state after 10 seconds of inactivity.
+* **Password feedback:** She closes her eyes while you type and reacts when Caps Lock is enabled.
+* **Login validation:** Displays a grumpy expression on incorrect passwords and a welcome screen on success.
+* **Single file deployment:** All images are embedded, allowing offline usage and easy hosting.
 
-### Expressions & what triggers them
+### Expressions
 
 ![Expressions](docs/expressions.png)
 
-### Dark mode
+## Usage
 
-![Dark mode](docs/login-dark.png)
+Open `foxy-login.html` in any web browser to run the application locally.
 
-## 🚀 Run it
+To host it online, upload the file to any static hosting service like Netlify or GitHub Pages.
 
-Just **double-click `foxy-login.html`** — it opens in your browser. That's it.
+## Configuration
 
-To host it online instead, drop the file on [Netlify Drop](https://app.netlify.com/drop) or enable GitHub Pages on this repo.
-
-## 🔑 Set the password
-
-Open `foxy-login.html` in any text editor and edit these lines near the top of the `<script>`:
+To set the login credentials, edit the `AUTH` object near the top of the `<script>` section in `foxy-login.html`:
 
 ```js
 const AUTH = { email:"friend@home", password:"changeme" };
@@ -37,32 +32,31 @@ const WELCOME_TITLE = "Welcome back!";
 const WELCOME_MSG   = "The computer's all yours. Have a great day!";
 ```
 
-Save, reload. Done.
+Save the file and reload the page to apply the changes.
 
-## 🖥️ Make it greet you at startup (Windows)
+## Windows Startup Configuration
 
-This turns the page into a fullscreen "lock screen" that opens automatically when you log in.
+You can configure the login page to launch automatically on Windows startup.
 
-1. Put **`foxy-login.html`** and **`Start-Foxy.bat`** in the **same folder**.
-2. Double-click `Start-Foxy.bat` to test — the fox fills the screen. (Press `Alt`+`F4` to exit.)
-3. Right-click `Start-Foxy.bat` → **Create shortcut**.
-4. Press `Win`+`R`, type `shell:startup`, press Enter, and drop the shortcut into that folder.
-5. Now Foxy greets you every time you log into Windows. Correct password → welcome screen → it closes.
+1. Place `foxy-login.html` and `Start-Foxy.bat` in the same folder.
+2. Test the script by running `Start-Foxy.bat` (press `Alt`+`F4` to close).
+3. Create a shortcut to `Start-Foxy.bat`.
+4. Press `Win`+`R`, type `shell:startup`, and press Enter. Move the shortcut into the startup folder.
+5. The login screen will now appear after logging into Windows. 
 
-**To remove:** delete the shortcut from the `shell:startup` folder.
+To remove this behavior, delete the shortcut from the `shell:startup` folder.
 
-> ⚠️ **This is a decorative greeting, not real security.** It appears *after* the normal Windows login and can be dismissed with `Esc` / `Alt`+`Tab` / `Alt`+`F4`. Your actual account password still protects the computer. Treat this as a fun gift, not a lock.
+> Note: This is purely a decorative screen and does not provide real security. It appears after the Windows login and can be bypassed using `Esc`, `Alt`+`Tab`, or `Alt`+`F4`.
 
-## 🎨 Customize
+## Customization
 
-| What | Where |
-|------|-------|
-| Colors (light) | `:root { … }` in the `<style>` |
-| Colors (dark) | `[data-theme="dark"] { … }` |
-| Which face maps to which state | the `FRAME_OF` object in the `<script>` |
-| Blink frequency / double-blink chance | `scheduleBlink()` and the `0.22` in `doBlink()` |
-| Idle-to-sleepy delay | the `10000` in `startIdleTimer()` |
+| Item | Location |
+|---|---|
+| Colors | `:root { … }` in the `<style>` block |
+| Expressions mapping | The `FRAME_OF` object in the `<script>` block |
+| Blink frequency | `scheduleBlink()` and `doBlink()` |
+| Idle timer | The value `10000` in `startIdleTimer()` |
 
-## 🦊 Credits
+## Credits
 
-Character artwork generated for this project; code is free to use and modify.
+Character artwork was generated specifically for this project. The code is available for use and modification.
