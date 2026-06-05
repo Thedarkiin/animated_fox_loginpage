@@ -41,11 +41,12 @@ Save the file and refresh your browser to apply changes.
 
 You can trigger the login page to launch automatically on Windows startup:
 
-1. Place `foxy-login.html` and `Start-Foxy.bat` in the same directory.
-2. Test the script by running `Start-Foxy.bat` (press `Alt`+`F4` to close).
-3. Create a shortcut to `Start-Foxy.bat`.
-4. Press `Win`+`R`, type `shell:startup`, and press Enter. Move the shortcut into the startup folder.
-5. The login screen will now appear immediately after logging into Windows. 
+1. Press `Win`+`R`, type `shell:startup`, and press Enter to open your Startup folder.
+2. Right-click inside the folder, select **New > Shortcut**.
+3. For the location, enter your browser path followed by `--kiosk` and the path to your HTML file. For example:
+   `"C:\Program Files\Google\Chrome\Application\chrome.exe" --kiosk "file:///C:/path/to/foxy-login.html"`
+4. Click Next, name it "Foxy Login", and click Finish.
+5. The login screen will now launch perfectly in full screen immediately after logging into Windows.
 
 > **Note:** This screen is purely decorative and does not provide OS-level security. It runs after the native Windows login and can be bypassed via `Esc`, `Alt`+`Tab`, or `Alt`+`F4`.
 
