@@ -1,16 +1,19 @@
 # Foxy Login Screen
 
-A self-contained, single-file login page with an interactive fox mascot. The mascot reacts to user input: she blinks, closes her eyes during password entry, and changes expressions based on login success or failure. All assets and code are contained within a single `.html` file.
+A self-contained, single-file login page featuring an interactive fox mascot. The character reacts in real-time to user input—blinking, closing her eyes during password entry, and changing expressions based on authentication success or failure. 
+
+All logic, styling, and assets are bundled into a single `.html` file. No external dependencies or build steps required.
 
 ![Login screen](docs/login-light.png)
 
 ## Features
 
-* **Interactive character:** Six expressions that transition smoothly.
-* **Idle animations:** Random blinking and a sleepy state after 10 seconds of inactivity.
-* **Password feedback:** She closes her eyes while you type and reacts when Caps Lock is enabled.
-* **Login validation:** Displays a grumpy expression on incorrect passwords and a welcome screen on success.
-* **Single file deployment:** All images are embedded, allowing offline usage and easy hosting.
+- **Interactive Mascot:** Six smooth expression transitions based on state.
+- **Contextual Feedback:** Fox covers her eyes while typing passwords and reacts if Caps Lock is enabled.
+- **Idle State:** Random blinking and a sleepy animation after 10 seconds of inactivity.
+- **Dark/Light Mode:** Includes an integrated theme toggle and respects system-level OS color preferences.
+- **Fully Responsive:** Flexbox-driven layout that perfectly scales across desktop, tablet, and mobile screens without clipping.
+- **Zero Dependencies:** Single-file deployment. All base64 image assets are embedded for immediate offline or online usage.
 
 ### Expressions
 
@@ -18,13 +21,13 @@ A self-contained, single-file login page with an interactive fox mascot. The mas
 
 ## Usage
 
-Open `foxy-login.html` in any web browser to run the application locally.
+Open `foxy-login.html` in any web browser to run locally.
 
-To host it online, upload the file to any static hosting service like Netlify or GitHub Pages.
+To host it online, simply drop the file into any static hosting service like GitHub Pages, Vercel, or Netlify.
 
 ## Configuration
 
-To set the login credentials, edit the `AUTH` object near the top of the `<script>` section in `foxy-login.html`:
+Login credentials and welcome text are configured near the top of the `<script>` block inside `foxy-login.html`:
 
 ```js
 const AUTH = { email:"friend@home", password:"changeme" };
@@ -32,31 +35,29 @@ const WELCOME_TITLE = "Welcome back!";
 const WELCOME_MSG   = "The computer's all yours. Have a great day!";
 ```
 
-Save the file and reload the page to apply the changes.
+Save the file and refresh your browser to apply changes.
 
 ## Windows Startup Configuration
 
-You can configure the login page to launch automatically on Windows startup.
+You can trigger the login page to launch automatically on Windows startup:
 
-1. Place `foxy-login.html` and `Start-Foxy.bat` in the same folder.
+1. Place `foxy-login.html` and `Start-Foxy.bat` in the same directory.
 2. Test the script by running `Start-Foxy.bat` (press `Alt`+`F4` to close).
 3. Create a shortcut to `Start-Foxy.bat`.
 4. Press `Win`+`R`, type `shell:startup`, and press Enter. Move the shortcut into the startup folder.
-5. The login screen will now appear after logging into Windows. 
+5. The login screen will now appear immediately after logging into Windows. 
 
-To remove this behavior, delete the shortcut from the `shell:startup` folder.
+> **Note:** This screen is purely decorative and does not provide OS-level security. It runs after the native Windows login and can be bypassed via `Esc`, `Alt`+`Tab`, or `Alt`+`F4`.
 
-> Note: This is purely a decorative screen and does not provide real security. It appears after the Windows login and can be bypassed using `Esc`, `Alt`+`Tab`, or `Alt`+`F4`.
+## Advanced Customization
 
-## Customization
-
-| Item | Location |
+| Component | Location in Code |
 |---|---|
-| Colors | `:root { … }` in the `<style>` block |
-| Expressions mapping | The `FRAME_OF` object in the `<script>` block |
-| Blink frequency | `scheduleBlink()` and `doBlink()` |
-| Idle timer | The value `10000` in `startIdleTimer()` |
+| **Theme Colors** | `:root { … }` and `[data-theme="dark"] { … }` in the `<style>` block |
+| **Expression Mapping** | The `FRAME_OF` object in the `<script>` block |
+| **Blink Frequency** | `scheduleBlink()` and `doBlink()` functions |
+| **Idle Timer Delay** | `10000` (ms) value inside `startIdleTimer()` |
 
 ## Credits
 
-Character artwork was generated specifically for this project. The code is available for use and modification.
+Character artwork was generated specifically for this project. Feel free to use, modify, and fork this code.
